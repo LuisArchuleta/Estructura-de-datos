@@ -1,7 +1,7 @@
 /**
  * 
  */
-package listasDoblementeLigadas;
+package listaCircular;
 
 /**
  * @author lourdesarmenta
@@ -39,6 +39,7 @@ public class Lista<T>  {
 		Nodo<T> nuevo = new Nodo<T>();
 		nuevo.setValor(valor);
 		if(esVacia()) {
+            nuevo.setSiguiente(nuevo);
 			cabeza = nuevo;
 		}
 		else {
@@ -48,7 +49,7 @@ public class Lista<T>  {
 				aux = aux.getSiguiente();
 			}
 			aux.setSiguiente(nuevo);
-			
+			nuevo.setSiguiente(cabeza);
 		}
 		tamanio++;
 	}
@@ -60,23 +61,28 @@ public class Lista<T>  {
 	 *    posición no exista
 	 */
 	public void insertar(T valor, int pos) throws PosicionIlegalException {
-		if (pos>=0 && pos<=tamanio) {
+		if (pos>=0 && pos<=tamanio&&tamanio>0) {
 			Nodo<T> nuevo = new Nodo<T>();
 			nuevo.setValor(valor);
 			//el nodo a insertar esta al comienzo
 			if (pos==0) {
+                Nodo<T> ultimo=cabeza
+                while(ultimo.getSiguiente()!=cabeza){
+                    ultimo=ultimo.getSiguiente();
+                }
+                nuevo.setSiguiente(cabeza);
+                cabeza=nuevo;
+                ultimo.setSiguiente(cabeza);
 
-				nuevo.setSiguiente(cabeza);
-				cabeza= nuevo;
-		
 			}else {
 				//El nodo a inserta va al final de la lista
 				if (pos==tamanio) {
 					Nodo<T> aux =cabeza;
-					while(aux.getSiguiente() != null) {
+					while(aux.getSiguiente() != cabeza) {
 						aux = aux.getSiguiente();
 					}
 					aux.setSiguiente(nuevo);
+                    nuevo.setSiguiente(cabeza);
 				}
 				
 				//el nodo a insertar esta en medio
@@ -130,8 +136,13 @@ public class Lista<T>  {
 		if(pos>=0 && pos<tamanio) {
 			if (pos==0) {
 				//El nodo a eliminar esta en la primera posicion
-				cabeza = cabeza.getSiguiente();
-				tamanio--;
+				Nodo<T> ultimo=cabeza;
+                while(ultimo.getSiguiente()!=cabeza){
+                    ultimo=ultimo.getSiguiente();
+                }
+                cabeza=cabeza.getSiguiente();
+                ultimo.setSiguiente(cabeza);
+                tamanio--;
 			}
 			else {
 				Nodo<T> aux = cabeza;
