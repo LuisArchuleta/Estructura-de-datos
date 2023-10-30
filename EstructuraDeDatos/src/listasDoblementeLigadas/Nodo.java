@@ -1,7 +1,7 @@
 /**
  * 
  */
-package listas;
+package listasDoblementeLigadas;
 
 /**
  * @author lourdesarmenta
@@ -16,7 +16,7 @@ public class Nodo <T>{
 	public Nodo() {
 		valor = null;
 		siguiente = null;
-		anterior=null;s
+		anterior=null;
 	}
 	//devuelve el valor
 	public T getValor() {

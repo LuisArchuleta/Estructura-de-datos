@@ -65,29 +65,33 @@ public class Lista<T>  {
 			nuevo.setValor(valor);
 			//el nodo a insertar esta al comienzo
 			if (pos==0) {
-
+				cabeza.setAnterior(nuevo);
 				nuevo.setSiguiente(cabeza);
 				cabeza= nuevo;
 		
 			}else {
 				//El nodo a inserta va al final de la lista
 				if (pos==tamanio) {
+					System.out.println("inserte al final:");
 					Nodo<T> aux =cabeza;
 					while(aux.getSiguiente() != null) {
 						aux = aux.getSiguiente();
 					}
 					aux.setSiguiente(nuevo);
+					nuevo.setAnterior(aux);
 				}
 				
 				//el nodo a insertar esta en medio
 				else {
 					Nodo<T> aux = cabeza;
-					for (int i=0;i<=pos-2;i++){
+					for (int i=0;i<=pos-1;i++){
 						aux = aux.getSiguiente();
 					}
 					Nodo<T> siguiente = aux.getSiguiente();
 					aux.setSiguiente(nuevo);
 					nuevo.setSiguiente(siguiente);
+					nuevo.setAnterior(aux);
+					siguiente.setAnterior(siguiente);
 					
 				}
 			}
@@ -130,6 +134,7 @@ public class Lista<T>  {
 		if(pos>=0 && pos<tamanio) {
 			if (pos==0) {
 				//El nodo a eliminar esta en la primera posicion
+				cabeza.setAnterior(null);
 				cabeza = cabeza.getSiguiente();
 				tamanio--;
 			}
@@ -138,9 +143,15 @@ public class Lista<T>  {
 				for(int i=0;i<=pos-2;i++){
 					aux = aux.getSiguiente();
 				}
+				if((pos+1)==tamanio){
+					aux.setSiguiente(null);
+				}
+				else{
 				Nodo<T>prox = aux.getSiguiente();
+				prox.getSiguiente().setAnterior(aux);
 				aux.setSiguiente(prox.getSiguiente());
-				tamanio--;	
+				}
+				tamanio--;
 			}
 			
 		}

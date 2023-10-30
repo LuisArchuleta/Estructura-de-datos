@@ -34,7 +34,7 @@ public class DemoLinkedListArrayList{
 
         }
         catch(Exception e){
-            e.printStackTrace();
+            e.sprintStackTrace();
         }
     }
 }
