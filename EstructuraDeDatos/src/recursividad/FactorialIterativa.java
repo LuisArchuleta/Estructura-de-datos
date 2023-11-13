@@ -1,4 +1,3 @@
-package recursividad;
 
 import java.util.Scanner;
 
@@ -8,6 +7,7 @@ public class FactorialIterativa {
         System.out.println("Coloca n:");
         int n= leer.nextInt();
         factorialiterativo(n);
+        leer.close();
     }
 
     public static long factorialiterativo(int n){

@@ -1,4 +1,4 @@
-package recursividad;
+
 import java.util.Scanner;
 public class FactorialRecursivo{
     public static void main(String[]args){

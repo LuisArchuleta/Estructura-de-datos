@@ -1,17 +1,25 @@
-package recursividad;
-
-import java.util.Scanner;
-
 public class mcdIterativa {
     public static void main(String[] args) {
-      mcd(124,6);
+      int dividendo= mcd(124,6);
+      System.out.println(dividendo);
     }
+    
     public static int mcd(int m, int n){
-        if (n<=m&&m%n==0)
-            return n;
-        else if (m<n)
-            return mcd(n,m);
-        else
-            return mcd(n,m%n);
+      int divisor, dividendo;
+      int res=0;
+      if(n<m){
+        divisor=n;
+        dividendo=m;
+      }
+      else{
+        divisor=m;
+        dividendo=n;
+      }
+      do{
+        res=dividendo%divisor;
+        dividendo=divisor;
+        divisor=res;
+      }while(!(res==0));
+      return dividendo;
     }
 }

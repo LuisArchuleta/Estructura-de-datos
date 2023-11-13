@@ -1,6 +1,5 @@
-package recursividad;
 
-public class Alfabeto {
+public class AlfabetoRecursivo {
     public static void main(String[] args) {
         System.out.println();
         metodoA('Z');

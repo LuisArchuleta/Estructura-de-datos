@@ -1,4 +1,4 @@
-package recursividad;
+
 
 import java.util.Scanner;
 
@@ -8,6 +8,7 @@ public class MuestraNaturaesRecursivo {
         System.out.println("Coloca n:");
         int n= leer.nextInt();
         muestraNaturalesRecursivo(n);
+        leer.close();
     }
     public static void muestraNaturalesRecursivo(int n){
         if(n>0){
