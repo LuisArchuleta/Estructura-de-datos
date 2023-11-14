@@ -37,7 +37,7 @@ public class Nodo <T>{
 	public void setizquierdo(Nodo izquierdo) {
 		this.izquierdo = izquierdo;
 	}
-	public Nodo derecho() {
+	public Nodo getderecho() {
 		return derecho;
 	}
 	public void setderecho(Nodo derecho) {
