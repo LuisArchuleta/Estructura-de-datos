@@ -3,7 +3,7 @@ package arbolbinario;
 public class ArbolBinario {
 
     protected Nodo raiz;
-    public ArbolBinario(Nodo raiz){
+    public ArbolBinario(){
        raiz=null; 
     }
     public Nodo getRaiz(){
@@ -26,8 +26,8 @@ public class ArbolBinario {
     private void preorden(Nodo aux){
         if(aux!=null){
             visitar(aux);
-            preorden(aux.getizquierdo());
-            preorden(aux.getderecho());
+            preorden(aux.getIzquierdo());
+            preorden(aux.getDerecho());
 
         }
     }
@@ -45,9 +45,9 @@ public class ArbolBinario {
      */
     private void inorden(Nodo aux){
         if (aux !=null) {
-            inorden(aux.getizquierdo());
+            inorden(aux.getIzquierdo());
             visitar(aux);
-            inorden(aux.getderecho());
+            inorden(aux.getDerecho());
         }
     }
     /**
@@ -63,8 +63,8 @@ public class ArbolBinario {
     
      private void postorden(Nodo aux){
         if(aux!=null){
-            postorden(aux.getizquierdo());
-            postorden(aux.getderecho());
+            postorden(aux.getIzquierdo());
+            postorden(aux.getDerecho());
             visitar(aux);
         }
      }
@@ -81,10 +81,10 @@ public class ArbolBinario {
             Nodo aux=pila.cima();
             visitar(aux);
             pila.retirar();
-            if(aux.getderecho()!=null)
-                pila.apilar(aux.getderecho());
-            if(aux.getizquierdo()!=null)
-                pila.apilar(aux.getizquierdo());
+            if(aux.getDerecho()!=null)
+                pila.apilar(aux.getDerecho());
+            if(aux.getIzquierdo()!=null)
+                pila.apilar(aux.getIzquierdo());
         }
 
       }
@@ -95,20 +95,64 @@ public class ArbolBinario {
     public void inordenIterativa(){
         pilas.Pila<Nodo> pila=new pilas.Pila<Nodo>();
         pila.apilar(raiz);
-        Nodo aux=raiz.getizquierdo();
+        Nodo aux=raiz.getIzquierdo();
         while(aux !=null || !pila.esVacia()){
             if(aux!=null){
                 pila.apilar(aux);
-                aux= aux.getizquierdo();
+                aux= aux.getIzquierdo();
             }else{
                 aux=pila.cima();
                 pila.retirar();
                 visitar(aux);
-                aux=aux.getderecho();
+                aux=aux.getDerecho();
             }
         }
     }
 
+    public void postOrdenIterativo() {
+        pilas.Pila<Nodo> pila = new pilas.Pila<Nodo>();      
+        Nodo aux = raiz;      
+        Nodo q = raiz;     
+        while (aux != null) {     
+         //Avanza por la izquierda y apila los nodos     
+            while(aux.getIzquierdo() !=null) {     
+                pila.apilar(aux);      
+                aux = aux.getIzquierdo();     
+            }   
+        while (aux !=null && (aux.getDerecho() ==null   
+            || aux.getDerecho()==q)) { 
+            visitar(aux);
+            q = aux; 
+            if (pila.esVacia()) 
+            return;
+            aux = pila.cima();
+            pila.retirar();
+        }
+        pila.apilar(aux);
+        aux = aux.getDerecho();
 
+        }
+    }
 
+ /**
+ * Recorrido por nivels
+ * 
+ */
+
+ public void recorridoPorNiveles() {
+    colas.Cola<Nodo> cola = new colas.Cola<Nodo>();
+    cola.encolar(raiz);
+    while (!cola.esVacia()){
+        Nodo aux = cola.frente();
+        System.out.print(aux.getValor().toString()+" ");
+
+        if(aux.getIzquierdo() !=null)
+            cola.encolar(aux.getIzquierdo());
+        if(aux.getDerecho() !=null)
+            cola.encolar(aux.getDerecho());
+            cola.desencolar();
+    }
+   
+}
+   
 }

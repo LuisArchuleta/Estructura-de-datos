@@ -7,19 +7,24 @@ package arbolbinario;
  * @author lourdesarmenta
  *
  */
-public class Nodo <T>{
+public class Nodo{
 	//Atributo valor del tipo T. Almacena la referencia al objeto que se guarda en el nodo
 	private Object valor;
 	
-	//Referencia al izquierdo nodo enlazado
-	Nodo izquierdo;
-	//Referencia al izquierdo nodo enlazado
-	Nodo derecho;
+	//Referencia al Izquierdo nodo enlazado
+	Nodo Izquierdo;
+	//Referencia al Izquierdo nodo enlazado
+	Nodo Derecho;
 	//constructor por defecto
 	public Nodo() {
 		valor = null;
-		izquierdo = null;
-		derecho=null;
+		Izquierdo = null;
+		Derecho=null;
+	}
+	public Nodo(Object valor) {
+		this.valor = valor;
+		Izquierdo = null;
+		Derecho = null;
 	}
 	//devuelve el valor
 	public Object getValor() {
@@ -29,19 +34,19 @@ public class Nodo <T>{
 	public void setValor(Object valor) {
 		this.valor = valor;
 	}
-	//devuelve el atributo izquierdo
-	public Nodo getizquierdo() {
-		return izquierdo;
+	//devuelve el atributo Izquierdo
+	public Nodo getIzquierdo() {
+		return Izquierdo;
 	}
-	//Modifica el atributo izquierdo
-	public void setizquierdo(Nodo izquierdo) {
-		this.izquierdo = izquierdo;
+	//Modifica el atributo Izquierdo
+	public void setIzquierdo(Nodo Izquierdo) {
+		this.Izquierdo = Izquierdo;
 	}
-	public Nodo getderecho() {
-		return derecho;
+	public Nodo getDerecho() {
+		return Derecho;
 	}
-	public void setderecho(Nodo derecho) {
-		this.derecho = derecho;
+	public void setDerecho(Nodo Derecho) {
+		this.Derecho = Derecho;
 
 	}
 }
