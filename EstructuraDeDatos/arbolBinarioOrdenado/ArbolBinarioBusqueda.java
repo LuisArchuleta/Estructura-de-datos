@@ -241,7 +241,7 @@ public class ArbolBinarioBusqueda  {
 	 * 
 	 */
 
-	 public Nodo Buscar(Object valor){
+	 public Nodo buscar(Object valor){
 		Comparable dato=(Comparable) valor;
 		if(raiz==null)
 			return raiz;
@@ -283,5 +283,7 @@ public class ArbolBinarioBusqueda  {
 		else
 			return localizar(raizSub.getDerecho(),buscado);
 	  }
+
+	  
 
 }

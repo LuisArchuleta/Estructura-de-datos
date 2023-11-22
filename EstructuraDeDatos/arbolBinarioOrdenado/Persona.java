@@ -32,7 +32,7 @@ public class Persona implements Comparable {
 
     public boolean esIgual(Object q){
         Persona per= (Persona)q;
-        return (this.id==per.Id());
+        return (this.id==per.getId());
     }
     public boolean esMenor(Object q ){
         Persona per= (Persona)q;
